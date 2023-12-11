@@ -12,7 +12,7 @@ for theta = 0.1:0.005:0.4 % 劈尖夹角
     [x, y] = meshgrid(0:0.00001:xmax, 0:0.00001:0.001); % 生成网格，x 为横坐标，y 为纵坐标
     z = x * tan(theta);
     % 球面凹陷参数
-    r = lambda/3; % 球半径，例如 0.5 毫米
+    r = lambda; % 球半径，例如 0.5 毫米
     x_0 = length / 2; % 球心 x 坐标
     y_0 = 0.0005; % 球心 y 坐标
     z_0 = -0.0001; % 球面凹陷深度
@@ -29,7 +29,7 @@ for theta = 0.1:0.005:0.4 % 劈尖夹角
 
     k = 2 * pi / lambda; % 波数
     Delta = 2 * h; % 光程差
-    I = I0 * 2 * (cos(Delta * k + pi) + 1);
+    I = I0 * 2 * (cos(Delta * k + pi / 2) + 1);
     surf(x, y, z, I);
     set(gcf, 'color', 'white', [0.667, 0.667, 1]);
     shading interp; % 颜色插值
